@@ -1,6 +1,10 @@
 <script lang="ts">
 import Course from '$stories/Course.svelte';
 import Button from '$stories/Button.svelte';
+import Header from '$stories/Header.svelte';
+
+const { data } = $props();
+const { user } = $derived(data);
 
 let courses = $state<Course[]>([]);
 $inspect(courses);
@@ -25,6 +29,8 @@ const addCourse = () => {
 };
 
 </script>
+
+<Header user={user} />
 
 <Button
     label="Add course"

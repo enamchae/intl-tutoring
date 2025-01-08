@@ -1,17 +1,18 @@
 <script>
-  import './header.css';
-  import Button from './Button.svelte';
+import './header.css';
+import Button from './Button.svelte';
 
-  /**
-   * @typedef {Object} Props
-   * @property {{name: string}} [user] The user object
-   * @property {() => void} [onLogin] The login event handler
-   * @property {() => void} [onLogout] The logout event handler
-   * @property {() => void} [onCreateAccount] The account creation event handler
-   */
+/**
+ * @typedef {Object} Props
+ * @property {{name: string}} [user] The user object
+ * @property {() => void} [onLogin] The login event handler
+ * @property {() => void} [onLogout] The logout event handler
+ * @property {() => void} [onCreateAccount] The account creation event handler
+ */
 
-  /** @type {Props} */
-  const { user, onLogin, onLogout, onCreateAccount } = $props();
+/** @type {Props} */
+const { user, onLogin, onLogout, onCreateAccount } = $props();
+$inspect(user);
 </script>
 
 <header>
@@ -35,7 +36,7 @@
     <div>
       {#if user}
         <span class="welcome">
-          Welcome, <b>{user.name}</b>!
+          Welcome, <b>{user.user_metadata.full_name}</b>!
         </span>
         <Button size="small" onClick={onLogout} label="Log out" />
       {:else}
